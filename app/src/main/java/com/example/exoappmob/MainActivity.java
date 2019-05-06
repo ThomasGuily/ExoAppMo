@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void vue1 (View view)
     {   //view1 = new View();
-        Intent  Intent1 = new Intent(MainActivity.this,view1.class);
+        Intent  Intent1 = new Intent(MainActivity.this,create.class);
         startActivityForResult (Intent1, 1);
 
     }
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void vue2 (View view){
         //tv.setText("Vous avez utilisé un listener !");
-        Intent  Intent2 = new Intent(MainActivity.this,view2.class);
+        Intent  Intent2 = new Intent(MainActivity.this,login.class);
         startActivityForResult (Intent2,2);
     }
 

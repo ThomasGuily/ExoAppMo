@@ -13,7 +13,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 
 
-public class view1 extends AppCompatActivity {
+public class create extends AppCompatActivity {
 
     Intent  MyIntent;
     EditText Et1;
@@ -26,7 +26,7 @@ public class view1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view1);
+        setContentView(R.layout.create);
         MyIntent = getIntent();
         Et1 = findViewById(R.id.inp1);
         Et2 = findViewById(R.id.inp2);

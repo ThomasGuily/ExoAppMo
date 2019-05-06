@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class view2 extends AppCompatActivity {
+public class login extends AppCompatActivity {
 
     Intent  MyIntent ;
     EditText Et1;
@@ -23,7 +23,7 @@ public class view2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view2);
+        setContentView(R.layout.login);
         MyIntent = getIntent();
         Et1 = findViewById(R.id.inpu1);
         Et2 = findViewById(R.id.inpu2);
@@ -49,16 +49,21 @@ public class view2 extends AppCompatActivity {
         result = db.rawQuery(sql, null);
         result.moveToFirst();
 
+
+
         if(result!=null && result.getCount()>0) {
+            // si le résultat de la requète n'est pas nul
 
             String str = result.getString(result.getColumnIndex("pass"));
-            Log.i("db ", "cliqueBouton: " + str); //(result.getColumnIndex("content"));
-            Log.i("db ", "cliqueBouton: " + a);
+            // on met le mot de passe dans un string
+            //Log.i("db ", "cliqueBouton: " + str); //(result.getColumnIndex("content"));
+            //Log.i("db ", "cliqueBouton: " + a);
             if (str.equals(a)) {
-
+            //si les deux mdp sont égaux
 
                 db.close();
-                finish();
+                Intent  Intent3 = new Intent(login.this,connected.class);
+                startActivityForResult (Intent3, 1);
             }
             else {
                 db.close();

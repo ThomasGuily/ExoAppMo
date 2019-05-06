@@ -1,4 +1,4 @@
-package com.example.myapplication2;
+package com.example.exoappmob;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,9 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     String sql = "CREATE TABLE IF NOT EXISTS "
             + TABLE_NAME
             + " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " username TEXT ,pass TEXT, email TEXT);" ;
+            " username TEXT ,pass TEXT, email TEXT);" ; //Requète1, crétation de la table
     //Button bouton;
 
     @Override
@@ -34,13 +37,10 @@ public class MainActivity extends AppCompatActivity {
     {
         db = openOrCreateDatabase(DB_NAME, Context.MODE_PRIVATE, null);
         //db.execSQL ("DROP TABLE Users");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "
-                + TABLE_NAME
-                + " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                " username TEXT ,pass TEXT, email TEXT);");
+        db.execSQL(sql);
         db.close();
 
-        Log.i("db ", "cliqueBouton: " + sql);
+        //Log.i("db ", "cliqueBouton: " + sql);
         //t_debug.append("DB is CREATED. ").append("Path: ").append(DB_NAME).append(" Table: ").append(TABLE_NAME).append("\n");
 
         super.onCreate(savedInstanceState);
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void vue1 (View view)
-    {
+    {   //view1 = new View();
         Intent  Intent1 = new Intent(MainActivity.this,view1.class);
         startActivityForResult (Intent1, 1);
 

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MyApplication2</string>
+    <string name="modifier_une_t_che">Modifier une tâche</string>
+    <string name="effacer_une_t_che">Effacer une tâche</string>
+    <string name="ajouter_une_t_che">Ajouter une tâche</string>
+    <string name="vous_tes_connect">Vous êtes connecté</string>
+    <string name="button">Button</string>
+    <string name="ajout">Ajout</string>
+    <string name="supprimer">supprimer</string>
+    <string name="modifier">Modifier</string>
 </resources>

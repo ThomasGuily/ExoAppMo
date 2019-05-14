@@ -18,18 +18,29 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private static final String DB_NAME = "App.db";
-    private static final String TABLE_NAME = "Users";
+    private static final String USERS = "Users";
+    private static final String TEAM = "Team";
+    private static final String ACTIONS = "Actions";
     private SQLiteDatabase db;
-    private StringBuilder t_debug;
+    //private StringBuilder t_debug;
 
 
     TextView tv = null;
     TextView tv1 = null;
 
     String sql = "CREATE TABLE IF NOT EXISTS "
-            + TABLE_NAME
+            + USERS
             + " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " username TEXT ,pass TEXT, email TEXT);" ; //Requète1, crétation de la table
+            " username TEXT, firstname TEXT, name TEXT, pass TEXT, email TEXT);" ;
+    String sql2 = "CREATE TABLE IF NOT EXISTS "
+            + TEAM
+            + " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            " projectname TEXT);" ;
+    String sql3 = "CREATE TABLE IF NOT EXISTS "
+            + ACTIONS
+            + " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            " date DATE , howlong INT, actionname TEXT);" ;//Requète1, crétation des tables
+
     //Button bouton;
 
     @Override
@@ -37,7 +48,12 @@ public class MainActivity extends AppCompatActivity {
     {
         db = openOrCreateDatabase(DB_NAME, Context.MODE_PRIVATE, null);
         //db.execSQL ("DROP TABLE Users");
+        //db.execSQL ("DROP TABLE Team");
+        //db.execSQL ("DROP TABLE Actions");
+
         db.execSQL(sql);
+        db.execSQL(sql2);
+        db.execSQL(sql3);
         db.close();
 
         //Log.i("db ", "cliqueBouton: " + sql);
@@ -46,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tv = (TextView) findViewById(R.id.tv1);
+
         tv1 = (TextView) findViewById(R.id.tView);
 
         Button bt = (Button) findViewById(R.id.bt2);
@@ -77,11 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void cliqueBouton3(View view)
-    {
-        tv.setText("Vous avez utilisé la méthode onClick !");
 
-    }
     public void vue1 (View view)
     {   //view1 = new View();
         Intent  Intent1 = new Intent(MainActivity.this,create.class);

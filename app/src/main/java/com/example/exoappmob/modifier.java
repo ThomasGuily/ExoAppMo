@@ -25,6 +25,8 @@ public class modifier extends AppCompatActivity {
         setContentView(R.layout.modifier);
         MyIntent = getIntent();
         Et1 = findViewById(R.id.inp1);
+        Et2 = findViewById(R.id.inp2);
+        Et3 = findViewById(R.id.inp3);
 
 
 
@@ -39,21 +41,18 @@ public class modifier extends AppCompatActivity {
         String a = Et1.getText().toString();  //je convertis en String
         String b = Et2.getText().toString();
         String c = Et3.getText().toString();
-
-        String sqdel = "DELETE FROM Actions WHERE actionname = c;" ;
-
-        String sql = "INSERT INTO Actions (date, howlong, actionname) VALUES ('" + a +"','" + b +"','" + c + "')";//"," + id + ")";
-        Log.i("db ", "cliqueBouton: " + sql);
-        //StringBuilder sql = new StringBuilder();
-        //sql.append("SELECT * FROM ").append("Users");
+        //on modifie grace au nom de l'action (seul l'action ayant le nom spécifier a été modifier)
+        String sqdel = "DELETE FROM Actions WHERE actionname = '" + c +"';" ; //on peut modifier n'importe quelle tache (possibilité de rajouté un ou avec l'id_users (seul les actions rentrées par l'utilisateur seront modifiées)
+        Integer id = Integer.parseInt(login.getId());
+        String sql = "INSERT INTO Actions (date, howlong, actionname, id_Users) VALUES ('" + a +"','" + b +"','" + c + "'," + id + ")";
+        //Log.i("db ", "cliqueBouton: " + sql);
+        //Log.i("db ", "cliqueBouton: " + sqdel);
         db = openOrCreateDatabase("App.db", MODE_PRIVATE, null);
         db.execSQL(sqdel);
         db.execSQL(sql);
         db.close();
 
-
-
-        Intent  Intent1 = new Intent(modifier.this,ajouter.class);
+        Intent  Intent1 = new Intent(modifier.this,connected.class);
         startActivityForResult (Intent1, 1);
 
         finish();

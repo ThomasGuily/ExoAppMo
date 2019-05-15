@@ -19,10 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String DB_NAME = "App.db";
     private static final String USERS = "Users";
-    private static final String TEAM = "Team";
     private static final String ACTIONS = "Actions";
     private SQLiteDatabase db;
-    //private StringBuilder t_debug;
+
 
 
     TextView tv = null;
@@ -35,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
     String sql2 = "CREATE TABLE IF NOT EXISTS "
             + ACTIONS
             + " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " date DATE , howlong INT, actionname TEXT,id_Users INTEGER);" ;//Requète1, crétation des tables
+            " date DATE , howlong INT, actionname TEXT, id_Users INTEGER,FOREIGN KEY (id_Users) REFERENCES " + USERS+ "(id));" ;//Requète1, crétation des tables
 
-    //Button bouton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
         db.close();
 
-        //Log.i("db ", "cliqueBouton: " + sql);
-        //t_debug.append("DB is CREATED. ").append("Path: ").append(DB_NAME).append(" Table: ").append(TABLE_NAME).append("\n");
+        Log.i("db ", "cliqueBouton: " + sql);
+        Log.i("db ", "cliqueBouton: " + sql2);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -61,12 +60,7 @@ public class MainActivity extends AppCompatActivity {
         tv1 = (TextView) findViewById(R.id.tView);
 
         Button bt = (Button) findViewById(R.id.bt2);
-        /* bt.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                tv.setText("Vous avez utilisé un listener !");
-            }
-        });*/
+
     }
 
     @Override
@@ -89,8 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void vue1 (View view)
-    {   //view1 = new View();
+    public void vue1 (View view) {
         Intent  Intent1 = new Intent(MainActivity.this,create.class);
         startActivityForResult (Intent1, 1);
 
@@ -98,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void vue2 (View view){
-        //tv.setText("Vous avez utilisé un listener !");
         Intent  Intent2 = new Intent(MainActivity.this,login.class);
         startActivityForResult (Intent2,2);
     }

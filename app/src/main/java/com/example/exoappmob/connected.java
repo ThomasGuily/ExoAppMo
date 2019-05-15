@@ -28,6 +28,7 @@ public class connected extends AppCompatActivity {
     public void cliqueBouton1(View view) {
         Intent  Intent1 = new Intent(connected.this,ajouter.class);
         startActivityForResult (Intent1, 1);
+
     }
     public void cliqueBouton2(View view) {
         Intent  Intent2 = new Intent(connected.this,modifier.class);
@@ -35,8 +36,13 @@ public class connected extends AppCompatActivity {
 
     }
     public void cliqueBouton3(View view) {
-        Intent  Intent3 = new Intent(connected.this,calendrier.class);
+        Intent  Intent3 = new Intent(connected.this,supprimer.class);
         startActivityForResult (Intent3, 3);
+
+    }
+    public void clique(View view) {
+        Intent  Intent4 = new Intent(connected.this,calendrier.class);
+        startActivityForResult (Intent4, 4);
 
     }
 

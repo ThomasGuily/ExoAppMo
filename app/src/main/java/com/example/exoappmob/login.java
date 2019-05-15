@@ -20,7 +20,7 @@ public class login extends AppCompatActivity {
     private Cursor result;
 
     private Cursor iduser ;
-    public static String str1 ;
+    private static String id ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +32,9 @@ public class login extends AppCompatActivity {
 
     }
 
-
+    public static String getId() {
+        return id;
+    }
 
     public void cliqueBouton(View view) {
 
@@ -66,7 +68,7 @@ public class login extends AppCompatActivity {
 
                 iduser = db.rawQuery( "SELECT id FROM Users WHERE username = '"+ b +"';", null);
                 iduser.moveToFirst();
-                String str1 = iduser.getString(iduser.getColumnIndex("id"));
+                id = iduser.getString(iduser.getColumnIndex("id"));
                 db.close();
                 Intent  Intent3 = new Intent(login.this,connected.class);
                 startActivityForResult (Intent3, 1);

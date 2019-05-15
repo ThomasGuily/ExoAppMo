@@ -1,6 +1,7 @@
 package com.example.exoappmob;
 import android.app.Activity;
 import android.content.Intent;
+import com.example.exoappmob.login;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,10 +12,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class connected extends AppCompatActivity {
+
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.connected);
+
 
 
 

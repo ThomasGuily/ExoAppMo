@@ -33,13 +33,9 @@ public class MainActivity extends AppCompatActivity {
             + " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
             " username TEXT, firstname TEXT, name TEXT, pass TEXT, email TEXT);" ;
     String sql2 = "CREATE TABLE IF NOT EXISTS "
-            + TEAM
-            + " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " projectname TEXT);" ;
-    String sql3 = "CREATE TABLE IF NOT EXISTS "
             + ACTIONS
             + " (id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            " date DATE , howlong INT, actionname TEXT);" ;//Requète1, crétation des tables
+            " date DATE , howlong INT, actionname TEXT,id_Users INTEGER);" ;//Requète1, crétation des tables
 
     //Button bouton;
 
@@ -48,12 +44,11 @@ public class MainActivity extends AppCompatActivity {
     {
         db = openOrCreateDatabase(DB_NAME, Context.MODE_PRIVATE, null);
         //db.execSQL ("DROP TABLE Users");
-        //db.execSQL ("DROP TABLE Team");
         //db.execSQL ("DROP TABLE Actions");
 
         db.execSQL(sql);
         db.execSQL(sql2);
-        db.execSQL(sql3);
+
         db.close();
 
         //Log.i("db ", "cliqueBouton: " + sql);

@@ -19,7 +19,8 @@ public class login extends AppCompatActivity {
     private SQLiteDatabase db;
     private Cursor result;
 
-
+    private Cursor iduser ;
+    public static String str1 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,9 +64,13 @@ public class login extends AppCompatActivity {
             if (str.equals(a)) {
             //si les deux mdp sont égaux
 
+                iduser = db.rawQuery( "SELECT id FROM Users WHERE username = '"+ b +"';", null);
+                iduser.moveToFirst();
+                String str1 = iduser.getString(iduser.getColumnIndex("id"));
                 db.close();
                 Intent  Intent3 = new Intent(login.this,connected.class);
                 startActivityForResult (Intent3, 1);
+                finish();
             }
             else {
                 db.close();
